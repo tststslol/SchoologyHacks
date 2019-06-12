@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Magical</title>
+	<meta charset="utf-8">
+	<script src="jquery-3.4.0.min.js"></script>
+</head>
+<body>
+	<a>I'm magical.</a>
+	<script type="text/javascript">
+		var rotate = 0;
+		document.setInterval(function(){
+			$("a").css("color","rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")");
+		},100)
+		$("a").click(function(e){
+			e.preventDefault();
+			rotate+=180;
+			e.animate({
+				transform: "rotate("+rotate+"deg)"
+			});
+		});
+	</script>
+</body>
+</html>
