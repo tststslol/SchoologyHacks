@@ -9,16 +9,16 @@
 	<a>I'm magical.</a>
 	<script type="text/javascript">
 		var rotate = 0;
-		document.setInterval(function(){
+		setInterval(function(){
 			$("a").css("color","rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")");
 		},100)
-		$("a").click(function(e){
+		/*$("a").click(function(e){
 			e.preventDefault();
 			rotate+=180;
 			e.animate({
 				transform: "rotate("+rotate+"deg)"
 			});
-		});
+		});*/
 	</script>
 </body>
 </html>
