@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title>Processing.JS inside Webpages: Template</title> 
+  </head>
+  <body>
+	<!--This draws the canvas on the webpage -->
+    <canvas id="mycanvas"></canvas> 
+  </body>
+ 
+  <!-- Include the processing.js library -->
+  <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+  <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+  <script>
+  var programCode = function(processingInstance) {
+    with (processingInstance) {
+    	size(500,500);
+      /**
+		 * This is a vector field:
+		 * 
+		 * Green Points are gravitators
+		 * Blue Points are repulsors
+		 * 
+		 * Right click to add a gravitator or a repulsor
+		 * Drag a point to move it. 
+		 * Click a point to select it, and then you can either switch 
+		 * its polarity, change its strength, or delete it.
+		**/
+		var numOfPointers = 20;
+
+		var index = width/numOfPointers;
+
+		var isHovered = function(x,y,w,h){
+		    if(mouseX>x&&mouseY>y&&mouseX<x+w&&mouseY<y+h){
+		        return true;
+		    } else {
+		        return false;
+		    }
+		};
+
+		var pointer = function(x,y){
+		    this.position = new PVector(x,y);
+		    this.angle = 0;
+		    this.velocity = new PVector(0,0);
+		    this.class = "repulsor";
+		};
+		pointer.prototype.applyForce = function(f){
+		    this.velocity.add(f);
+		};
+		pointer.prototype.update = function(){
+		    if(abs(this.velocity.y)<=0.01&&abs(this.velocity.x)<=0.01){
+		        this.angle = undefined;
+		    } else {
+		        this.angle = atan2(-this.velocity.y,-this.velocity.x);
+		    }
+		    this.velocity.set(0,0);
+		};
+		pointer.prototype.render = function(){
+		    pushMatrix();
+		    translate(this.position.x,this.position.y);
+		    if(this.angle){
+		        rotate(this.angle);
+		        line(0,0,index/2,0);
+		    } else {
+		        point(0,0);
+		    }
+		    popMatrix();
+		};
+
+
+		var gravitator = function(x,y,strength){
+		    this.position = new PVector(x,y);
+		    this.strength = strength;
+		    this.class = "gravitator";
+		};
+		gravitator.prototype.calculateForce = function(point){
+		    this.direction = PVector.sub(point.position,this.position);
+		    this.distance = this.direction.mag();
+		    this.direction.normalize();
+		    this.direction.div(this.distance);
+		    this.direction.mult(this.strength);
+		    return this.direction;
+		};
+		gravitator.prototype.display = function(){
+		    fill(68, 245, 151);
+		    noStroke();
+		    ellipse(this.position.x,this.position.y,20,20);
+		};
+
+		var repulsor = function(x,y,strength){
+		    this.position = new PVector(x,y);
+		    this.strength = strength;
+		};
+		repulsor.prototype.calculateForce = function(point){
+		    this.direction = PVector.sub(point.position,this.position);
+		    this.distance = this.direction.mag();
+		    this.direction.normalize();
+		    this.direction.mult(-1);
+		    this.direction.div(this.distance);
+		    this.direction.mult(this.strength);
+		    return this.direction;
+		};
+		repulsor.prototype.display = function(){
+		    fill(68, 239, 245);
+		    noStroke();
+		    ellipse(this.position.x,this.position.y,20,20);
+		};
+
+
+		var pointers = [];
+
+		for(var i = 0; i <= width; i+=index){
+		    for(var j = 0; j <= height; j+=index){
+		        pointers.push(new pointer(i,j));
+		    }
+		}
+
+		var manipulators = [new gravitator(263,280,50),new repulsor(463,262,50)];
+
+		var time = 0;
+
+		var selected;
+		var dragging = false;
+
+		var justSelected = true;
+		var dragging = false;
+		var menu = {x:0,y:0,active:false};
+		var dragging2 = false;
+
+		draw = function() {
+		    background(255);
+		    for(var i = 0; i < pointers.length; i++){
+		        for(var j = 0; j < manipulators.length; j++){
+		            pointers[i].applyForce(manipulators[j].calculateForce(pointers[i]));
+		        }
+		        
+		        pointers[i].update();
+		        strokeWeight(2);
+		        stroke(0);
+		        pointers[i].render();
+		        
+		        time+=0.005;
+		    }
+		    for(var j = 0; j < manipulators.length; j++){
+		        manipulators[j].display();
+		        if(dist(mouseX,mouseY,manipulators[j].position.x,manipulators[j].position.y)<10){
+		            fill(255, 255, 255,100);
+		            ellipse(manipulators[j].position.x,manipulators[j].position.y,20,20);
+		        }
+		        if(selected===j){
+		            noFill();
+		            strokeWeight(2);
+		            stroke(0, 0, 0);
+		            ellipse(manipulators[j].position.x,manipulators[j].position.y,20,20);
+		        }
+		    }
+		    if(selected||selected===0){
+		        noStroke();
+		        fill(191, 191, 191);
+		        rect(0,0,150,200);
+		        if(isHovered(10,10,130,50)){
+		            fill(171, 171, 171);
+		        } else {
+		            fill(161, 161, 161);
+		        }
+		        rect(10,10,130,50);
+		        if(isHovered(10,135,130,50)){
+		            fill(171, 171, 171);
+		        } else {
+		            fill(161, 161, 161);
+		        }
+		        rect(10,135,130,50);
+		        if(isHovered(10,87,32,25)){
+		            fill(171, 171, 171);
+		        } else {
+		            fill(161, 161, 161);
+		        }
+		        rect(10,87,32,25);
+		        if(isHovered(43,87,31,25)){
+		            fill(171, 171, 171);
+		        } else {
+		            fill(161, 161, 161);
+		        }
+		        rect(43,87,31,25);
+		        if(isHovered(75,87,31,25)){
+		            fill(171, 171, 171);
+		        } else {
+		            fill(161, 161, 161);
+		        }
+		        rect(75,87,31,25);
+		        if(isHovered(107,87,32,25)){
+		            fill(171, 171, 171);
+		        } else {
+		            fill(161, 161, 161);
+		        }
+		        rect(107,87,32,25);
+		        fill(0, 0, 0);
+		        textSize(20);
+		        text("Switch",25,43);
+		        text("Delete",25,168);
+		        text("1x",17,107);
+		        text("2x",47,107);
+		        text("4x",80,107);
+		        text("8x",112,107);
+		        strokeWeight(2);
+		        stroke(0);
+		        if(manipulators[selected].class === "gravitator"){
+		            fill(68, 239, 245);
+		        } else {
+		            fill(68, 245, 151);
+		        }
+		        ellipse(112,36,20,20);
+		        
+		        stroke(255, 0, 0);
+		        noFill();
+		        ellipse(112,161,20,20);
+		        line(107,154,119,168);
+		    }
+		    if(menu.active){
+		        noStroke();
+		        fill(191);
+		        pushMatrix();
+		        translate(menu.x,menu.y);
+		        if(isHovered(-50+menu.x,-50+menu.y,50,40)){
+		            fill(200);
+		        }else {
+		            fill(191);
+		        }
+		        rect(-50,-50,50,40);
+		        triangle(-10,-10,0,-10,0,0);
+		        if(isHovered(menu.x,-50+menu.y,50,40)){
+		            fill(181);
+		        } else {
+		            fill(171);
+		        }
+		        rect(0,-50,50,40);
+		        triangle(10,-10,0,-10,0,0);
+		        fill(68, 245, 151);
+		        ellipse(-26,-29,20,20);
+		        fill(68, 239, 245);
+		        ellipse(26,-29,20,20);
+		        
+		        popMatrix();
+		    }
+		};
+
+		mouseClicked = function(){
+		    
+		};
+		mousePressed = function(){
+		    for(var i = 0; i < manipulators.length; i++){
+		        if(dist(mouseX,mouseY,manipulators[i].position.x,manipulators[i].position.y)<10){
+		            if(selected!==i) {
+		                selected = i;
+		                justSelected = true;
+		                dragging = true;
+		            } else if(selected===i){
+		                dragging = true;
+		            }
+		        }
+		    }
+		};
+		mouseReleased = function(){
+		    for(var i = 0; i < manipulators.length; i++){
+		        if(dist(mouseX,mouseY,manipulators[i].position.x,manipulators[i].position.y)<10){
+		            if(selected===i&&!justSelected&&!dragging2){
+		                selected = undefined;
+		            } else {
+		                justSelected = false;
+		                dragging = false;
+		                dragging2 = false;
+		            }
+		        }
+		    }
+		};
+		mouseDragged = function(){
+		    if((selected||selected===0)&&dragging===true){
+		        manipulators[selected].position.set(mouseX,mouseY);
+		        dragging2 = true;
+		    }
+		};
+		mouseClicked = function(){
+		    if(mouseButton===37){
+		        if(selected){
+		            if(isHovered(10,10,130,50)){
+		                if(manipulators[selected].class === "gravitator"){
+		                    manipulators.splice(selected,1,new repulsor(manipulators[selected].position.x,manipulators[selected].position.y,manipulators[selected].strength));
+		                } else {
+		                    manipulators.splice(selected,1,new gravitator(manipulators[selected].position.x,manipulators[selected].position.y,manipulators[selected].strength));
+		                }
+		                
+		            } else if(isHovered(10,135,130,50)){
+		                manipulators.splice(selected,1);
+		                selected = undefined;
+		            } else if(isHovered(10,87,32,25)){
+		                manipulators[selected].strength = 50;
+		            } else if(isHovered(43,87,31,25)){
+		                manipulators[selected].strength = 100;
+		            } else if(isHovered(75,87,31,25)){
+		                manipulators[selected].strength = 200;
+		            } else if(isHovered(107,87,32,25)){
+		                manipulators[selected].strength = 400;
+		            }
+		        }
+		        if(menu.active){
+		            if(isHovered(-50+menu.x,-50+menu.y,50,40)){
+		                manipulators.push(new gravitator(menu.x,menu.y,50));
+		                menu.active = false;
+		            }
+		            if(isHovered(menu.x,-50+menu.y,50,40)){
+		                manipulators.push(new repulsor(menu.x,menu.y,50));
+		                menu.active = false;
+		            }
+		            
+		            
+		        }
+		    } else {
+		        if(!menu.active){
+		            menu.active = true;
+		            menu.x = mouseX;
+		            menu.y = mouseY;
+		        } else {
+		            menu.active = false;
+		        }
+		    }
+		};
+
+
+    }};
+
+  // Get the canvas that ProcessingJS will use
+  var canvas = document.getElementById("mycanvas"); 
+  // Pass the function to ProcessingJS constructor
+  var processingInstance = new Processing(canvas, programCode); 
+  </script>
+</html>
