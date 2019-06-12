@@ -4,6 +4,15 @@
 	<title>Magical</title>
 	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<style>
+		a {
+			left:50px;
+			top:50px;
+			text-decoration: underline;
+			position:absolute;
+			transition: transform 1s;
+		}
+	</style>
 </head>
 <body>
 	<a>I'm magical.</a>
@@ -11,13 +20,12 @@
 		var rotate = 0;
 		setInterval(function(){
 			$("a").css("color","rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")");
-		},100)
-		$("a").click(function(e){
-			e.preventDefault();
+		},100);
+
+		$("a").click(function(){
 			rotate+=180;
-			$("a").animate({
-				transform: "rotate("+rotate+"deg)"
-			});
+			console.log(rotate);
+			$("a").css("transform","rotate("+rotate+"deg)");
 		});
 	</script>
 </body>
