@@ -15,7 +15,7 @@
 		$("a").click(function(e){
 			e.preventDefault();
 			rotate+=180;
-			e.animate({
+			$("a").animate({
 				transform: "rotate("+rotate+"deg)"
 			});
 		});
