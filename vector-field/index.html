@@ -289,7 +289,7 @@
 		};
 		mouseClicked = function(){
 		    if(mouseButton===37){
-		        if(selected){
+		        if(selected||selected === 0){
 		            if(isHovered(10,10,130,50)){
 		                if(manipulators[selected].class === "gravitator"){
 		                    manipulators.splice(selected,1,new repulsor(manipulators[selected].position.x,manipulators[selected].position.y,manipulators[selected].strength));
