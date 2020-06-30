@@ -1,8 +1,8 @@
 # SchoologyHacks
 
-Schoology is a bad version of Social Media sites like Instagram and Facebook. However, it has **LOTS** of security issues.
+Schoology is a bad version of Social Media sites like Instagram and Facebook. However, it has a exploit when you post things.
 
-When you post something, it seems like you can only post images and links. This is because you cannot manually put in other elements like iframe and script and whatnot. Instead, you must use the console.
+When you post something, it seems like you can only post images and links. This is because it doesn't let you put in other elements like iframes and scripts and whatnot (for obvious reasons). Instead, I found a way to post HTML elements using the console, including iframes which are the most useful to me personally.
 
 ## How to:
 
@@ -41,3 +41,4 @@ It seems that Schoology takes the HTML in that box and copies it. Then, it saves
 
 Of course, iframes are safe and you won't be able to post any malicious content, so don't even try. This exploit is mostly just to make your Schoology profile awesome and terrific and fantastically gorgeous and, yeah I should stop. If you can't code HTML yet, you can use Google Sites or Wix to build and publish a website about yourself, then paste it into Schoology you n00b. If you can code HTML, I'd really like to hear from you and what you've done with this.
 
+I have a couple folders in this repo that I use. The rickroll folder includes an autoplaying rick roll, which I had for a while on my own Schoology profile. I took it down later because I felt like teachers might not be as *appreciative* of my artwork as others.
