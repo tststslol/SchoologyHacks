@@ -124,10 +124,15 @@
 
 		setInterval(() => {
 			animateButton();
-		}, 1000);
+		}, 740);
 
 		$("#clicky").click( () => {
 			switch (numclicks) {
+				case 6:
+					$("#clicky").html("It's over.");
+					$("#clicky").css({
+						fontSize: "10vw"
+					})
 				case 5:
 					document.getElementById("rickroll").play();
 					$("#clicky").html("WHY WAS I CREATED THIS WAY");
