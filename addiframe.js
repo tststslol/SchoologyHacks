@@ -5,7 +5,7 @@
     toInsertIframe.height = `${prompt("Enter a number (in pixels) for how high the iframe should be: ")}px`;
     document.getElementById("edit-body_ifr").contentDocument.getElementById("tinymce").appendChild(toInsertIframe);
 
-    alert("After it shows up (give some time to load), press post.");
+    alert("After it shows up (give some time to load), press post. Some sites don't allow you to put them in iframes (most sites actually), but I'm pretty sure Github Pages is a safe bet.");
 
     
 
