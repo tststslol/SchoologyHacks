@@ -22,10 +22,6 @@
     // The element tinymce is where the post is stored. Then, we stuff the iframe into "tinymce" and call it a day.
     document.getElementById("edit-body_ifr").contentDocument.getElementById("tinymce").appendChild(toInsertIframe);
 
-<<<<<<< HEAD
-    alert("After it shows up (give some time to load), press post.");
-    
-=======
     // Finally, we give the user a friendly message to remind them that HTML5 is weird.
     // (alert basically gives the user a message)
     alert("After it shows up (give some time to load), press post. Some sites don't allow you to put them in iframes (most sites actually), but I'm pretty sure Github Pages is a safe bet.");
@@ -34,7 +30,6 @@
     // IF YOU'RE CONCERNED ABOUT A LINE OF CODE OR DON'T UNDERSTAND HOW IT WORKS, DON'T FREAKING USE IT. 
     // JAVASCRIPT IS DANGERNESS NOISES OK? OK UNDERSTAND? UNDERSTOOD 
     // yeah but seriously don't put weird stuff in your console that you don't understand, your personal user info could be seriously compromised ok?
->>>>>>> 7801855db0166503d5761ff952f02de79ab7a07c
 
    
     // Here's the code for using this again:
