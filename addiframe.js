@@ -6,7 +6,6 @@
     document.getElementById("edit-body_ifr").contentDocument.getElementById("tinymce").appendChild(toInsertIframe);
 
     alert("After it shows up (give some time to load), press post.");
-
     
 
     /* 
