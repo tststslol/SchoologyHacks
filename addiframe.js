@@ -1,4 +1,8 @@
 
+// Hi! This is Roger Fan, and this is my code for inserting iframes into Schoology.
+// I've known this bug for around a week and I've played around with it before submitting a bug report.
+// Remember, the iframe link could constantly spam alerts, which would be debilatating to users.
+
 // This line means define a function, then run it.
 // If you're confused why this is necessary, it's because it keeps the variables out of the global namespace. 
 // If you don't know what that means, GO LEARN JAVASCRIPT you absolute fool of a homo sapien
@@ -26,13 +30,7 @@
     // (alert basically gives the user a message)
     alert("After it shows up (give some time to load), press post. Some sites don't allow you to put them in iframes (most sites actually), but I'm pretty sure Github Pages is a safe bet.");
 
-    // f r i e n d l y   n e i g h b o o r h o o d   r e m i n d e r :
-    // IF YOU'RE CONCERNED ABOUT A LINE OF CODE OR DON'T UNDERSTAND HOW IT WORKS, DON'T FREAKING USE IT. 
-    // JAVASCRIPT IS DANGERNESS NOISES OK? OK UNDERSTAND? UNDERSTOOD 
-    // yeah but seriously don't put weird stuff in your console that you don't understand, your personal user info could be seriously compromised ok?
-
-   
-    // Here's the code for using this again:
+    // Here's the code for using this:
     // document.head.appendChild(document.createElement('script')).src = 'https://bubbybabur.github.io/SchoologyHacks/addiframe.js'
     
 })();

@@ -1,3 +1,5 @@
+<!-- An example of how this bug could be abused: -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +14,7 @@
             alert("Lock is off.");
         } else {
             let currpassword = decodeURI( window.location.hash.slice(1,window.location.length) );
+            // Spam alerts until the password's right:
             while(prompt("Currently, this page is locked down.") !== currpassword){}
         }
     </script>
