@@ -15,3 +15,5 @@ Also, you can lock down any page or group with a janky password. This password c
 So yeah, put whatever in your Schoology posts, lock down your content, so yeah. Need some suggestions? Maybe put https://bubbybabur.github.io/SchoologyHacks/rickroll/ in. It's, uh, ok yes it's a rickroll. Rickroll your teachers, whatever.
 
 I'm not responsible if you get yourself into trouble ok? ok understand understood.
+
+EDIT: I submitted a bug report about this, and it seems like this is actually fine since iframes can't exactly steal user data. They can only be super annoying.
