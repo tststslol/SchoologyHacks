@@ -1,7 +1,4 @@
-
-// Hi! This is Roger Fan, and this is my code for inserting iframes into Schoology.
-// I've known this bug for around a week and I've played around with it before submitting a bug report.
-// Remember, the iframe link could constantly spam alerts, which would be debilatating to users.
+// CODE FOR INSERTING A LOCK INTO A GROUP OR PROFILE:
 
 // This line means define a function, then run it.
 // If you're confused why this is necessary, it's because it keeps the variables out of the global namespace. 

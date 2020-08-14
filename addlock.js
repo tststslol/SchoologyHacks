@@ -1,9 +1,4 @@
-
-// Here's how one could potentially abuse this bug to add a password to a group.
-// A rather tame example compared to what one could really do with it.
-
-// Go to https://github.com/BubbyBabur/SchoologyHacks/blob/master/lock/index.html to see the 
-// iframe website.
+// CODE FOR INSERTING AN IFRAME:
 
 // This line means define a function, then run it.
 // If you're confused why this is necessary, it's because it keeps the variables out of the global namespace. 
