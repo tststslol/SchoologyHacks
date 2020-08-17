@@ -16,7 +16,7 @@ Also, you can lock down any page or group with a janky password. This password c
 
 **Troubleshooting:**
 If it doesn't work, make sure you're in somewhere you can post, like a group, a course (not recommended because teachers), or your profile. Comments don't work.
-If it still doesn't work and the above wasn't helpful in any shape way or form, try reloading and trying it again. Avoid clicking on anything with your cursor after you inspect (there's a few details about how the HTML structure works that make it icky).
+If it still doesn't work and the above wasn't helpful in any shape way or form, try reloading and trying it again. Avoid clicking on anything with your cursor after you inspect (there's a few details about how the HTML structure works that make it not very cool).
 
 If it still doesn't work, I don't know what to tell you.
 
