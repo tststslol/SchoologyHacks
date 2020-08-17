@@ -12,6 +12,16 @@ Also, you can lock down any page or group with a janky password. This password c
 `document.head.appendChild(document.createElement('script')).src = 'https://bubbybabur.github.io/SchoologyHacks/addlock.js'`
 **Again, go to https://github.com/BubbyBabur/SchoologyHacks/blob/master/addlock.js to verify the code! Be careful!**
 
+## NOTES:
+
+**Troubleshooting:**
+If it doesn't work, make sure you're in somewhere you can post, like a group, a course (not recommended because teachers), or your profile. Comments don't work.
+If it still doesn't work and the above wasn't helpful in any shape way or form, try reloading and trying it again. Avoid clicking on anything with your cursor after you inspect (there's a few details about how the HTML structure works that make it icky).
+
+If it still doesn't work, I don't know what to tell you.
+
+**Ok bye**
+
 So yeah, put whatever in your Schoology posts, lock down your content, so yeah. Need some suggestions? Maybe put https://bubbybabur.github.io/SchoologyHacks/rickroll/ in. It's, uh, ok yes it's a rickroll. Rickroll your teachers, whatever.
 
 I'm not responsible if you get yourself into trouble ok? ok understand understood.
