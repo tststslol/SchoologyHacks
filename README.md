@@ -20,6 +20,13 @@ If it still doesn't work and the above wasn't helpful in any shape way or form, 
 
 If it still doesn't work, I don't know what to tell you.
 
+## Schoology Portfolios
+This process is amazingly easy in Schoology portfolios. In a page inside any of your portfolios, there'll be two dots on the top right corner of the rich text editor, underneath the "preview button". Click that to toggle the HTML editor. Inside that editor, put:
+`<p><iframe src="https://bubbybabur.github.io/SchoologyHacks/rickroll" width="320" height="240" style="width: 100%; height: 500px;"></iframe></p>`
+Then, wait maybe 5 seconds for it to autosave and click Preview. You may need to click it a couple times for it to work. Then, you should have a button inside your page. 
+You can change the "https://bubbybabur.github.io/SchoologyHacks/rickroll" inside the HTML code above to anything you want. It seems like it doesn't work for http, though. You can change the "width:100%" or "height:500px" to anything too (it's inline css). 
+And yes, you can literally put any html element there, except it checks for xss and stuff.
+
 **Ok bye**
 
 So yeah, put whatever in your Schoology posts, lock down your content, so yeah. Need some suggestions? Maybe put https://bubbybabur.github.io/SchoologyHacks/rickroll/ in. It's, uh, ok yes it's a rickroll. Rickroll your teachers, whatever.
