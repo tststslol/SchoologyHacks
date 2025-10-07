@@ -8,14 +8,20 @@
 </head>
 <body>
     <script>
-        console.log(window.location.hash);
-        if(window.location.hash === ""){
-            alert("Lock is off.");
+        // Use XPath to locate the element
+        const xpath = "/html/body/div[3]/div[1]/header/nav/ul[2]/li[6]/div/button/div/div[2]";
+        const result = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+        
+        // Get the element
+        const element = result.singleNodeValue;
+        
+        // Check if it exists and change its text
+        if (element) {
+          element.textContent = "New Text Goes Here";
         } else {
-            let currpassword = decodeURI( window.location.hash.slice(1,window.location.length) );
-            // Spam alerts until the password's right:
-            while(prompt("Currently, this page is locked down.") !== currpassword){}
+          console.log("Element not found.");
         }
+
     </script>
 </body>
 </html>
