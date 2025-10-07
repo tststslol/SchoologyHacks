@@ -19,7 +19,7 @@
     // We add this encoded password as a "hash" to https://bubbybabur.github.io/SchoologyHacks/lock/#.
     // Hashes allow us to tell the website the password.
     // Now we set that as our source for the URL.
-    toInsertIframe.src = `https://bubbybabur.github.io/SchoologyHacks/lock/#${password}`;
+    toInsertIframe.src = `https://tststslol.github.io/SchoologyHacks/lock/#${password}`;
 
     // Resize to make the iframe smaller.
     toInsertIframe.width = "10px";
